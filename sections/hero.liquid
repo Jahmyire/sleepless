@@ -1,0 +1,31 @@
+<div class="hero__wrapper">
+    {% for block in section.blocks %}
+        <img class="heroImage" src="{{ block.settings.heroImage | img_url: 'master'}}" alt="Hero Image">
+    {% endfor %}
+</div>
+
+{% schema %}
+    {
+        "name": "Hero",
+        "class": "Hero__section",
+        "blocks": [
+            {
+                "name": "Images",
+                "type": "Images",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "heroImage",
+                        "label": "Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Hero",
+                "category": "Media"
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,74 @@
+<div class="think__wrapper" style="background: #f9f8f4;">
+    <div class="think__copy-wrapper">
+        <h1 class="content--header">{{ section.settings.header }}</h1>
+        <div class="think__blocks-wrapper">
+            {% for block in section.blocks %}
+            <div class="think__blocks">
+                <p class="block__header">{{ block.settings.thinkTitle }}</p>
+                <p class="block__copy">{{ block.settings.thinkCopy }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="button__wrapper">
+            <a href="{{ section.settings.buttonURL }}">
+                <h2>{{ section.settings.buttonText }}</h2>
+            </a>
+        </div>
+    </div>
+    <div class="think__image-wrapper">
+        <img src="{{ section.settings.image | img_url: 'master' }}" alt="Section Image">
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Think",
+        "class": "Think__section",
+        "settings": [
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Header"
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Side Image"
+            },
+            {
+                "type": "text",
+                "id": "buttonText",
+                "label": "Button Text"
+            },
+            {
+                "type": "url",
+                "id": "buttonURL",
+                "label": "Button URL"
+            }
+        ],
+        "blocks": [
+            {
+                "name": "Think Block",
+                "type": "Copy",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "thinkTitle",
+                        "label": "Block Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "thinkCopy",
+                        "label": "Block Copy"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Think",
+                "category": "Text"
+            }
+        ]
+    }
+{% endschema %}

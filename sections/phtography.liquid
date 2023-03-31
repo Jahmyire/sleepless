@@ -1,0 +1,66 @@
+<div class="photography__wrapper">
+    <h1 class="content--header">{{ section.settings.photoText  }}</h1>
+    {% for block in section.blocks %}
+
+        {% if block.type == 'Images' %}
+            <div class="images__block">
+                <img src="{{ block.settings.photoImage1 | img_url: 'master' }}" alt="Image">
+                <img src="{{ block.settings.photoImage2 | img_url: 'master' }}" alt="Image">
+            </div>
+        {% endif  %}
+
+        {% if block.type == 'Content' %}
+            <div class="textwImages__block">
+                <h1 class="content--header">{{ block.settings.photoText  }}</h1>
+                <img src="{{ block.settings.photoImage | img_url: 'master' }}" alt="Image">
+            </div>
+        {% endif  %}
+    {% endfor %}
+</div>
+
+{% schema %}
+    {
+        "name": "Photography",
+        "class": "Photography__section",
+        "blocks": [
+            {
+                "name": "Photography Images",
+                "type": "Images",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "photoImage1",
+                        "label": "Image 1"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "photoImage2",
+                        "label": "Image 2"
+                    }  
+                ]
+            },
+            {
+                "name": "Images with Text",
+                "type": "Content",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "photoImage",
+                        "label": "Image 1"
+                    },
+                    {
+                        "type": "text",
+                        "id": "photoText",
+                        "label": "Text"
+                    }   
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Photography",
+                "category": "Media"
+            }
+        ]
+    }
+{% endschema %}

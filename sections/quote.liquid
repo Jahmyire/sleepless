@@ -1,0 +1,28 @@
+<div class="quote__wrapper">
+  <h2 class="content--header quote__text">{{ section.settings.quote }}</h2>
+  <p class="citation">- {{ section.settings.citation }}</p>
+</div>
+
+{% schema %}
+  {
+    "name": "Quote",
+    "class": "Quote__section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "quote",
+        "label": "Quote Text"
+      }, {
+        "type": "text",
+        "id": "citation",
+        "label": "Citation"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Quote",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

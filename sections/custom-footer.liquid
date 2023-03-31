@@ -1,0 +1,81 @@
+<footer class="cfooter__wrapper">
+    <div class="cfooter__left">
+        <h1 class="content--header cfooter__head">{{ section.settings.header }}</h1>
+        <div class="cfooter__buttons-container">
+            <a href="{{ section.settings.button1url }}">
+                <h2>{{ section.settings.button1text }}</h2>
+            </a>
+
+            <a href="{{ section.settings.button2url }}">
+                <h2>{{ section.settings.button2text }}</h2>
+            </a>
+        </div>
+    </div>
+    <div class="cfooter__right">
+        <div class="cfooter__menu">
+            {% for link in linklists[section.settings.menu1].links %}
+                <a href="{{ link.url }}"><h2>{{ link.title }}</h2></a>
+            {% endfor %}
+        </div>
+
+        <div class="cfooter__menu">
+            {% for link in linklists[section.settings.menu2].links %}
+                <a href="{{ link.url }}"><h2>{{ link.title }}</h2></a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="copyRight__wrapper">
+        <p class="copyRight">All Materials © 2020 | Site By Sleepless</p>
+        <p>Private Policy</p>
+    </div>
+    
+</footer>
+{% schema %}
+    {
+        "name": "CFooter",
+        "class": "CFooter__section",
+        "settings": [
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Header"
+            },
+            {
+                "type": "text",
+                "id": "button1text",
+                "label": "Button 1 Text"
+            },
+            {
+                "type": "url",
+                "id": "button1url",
+                "label": "Button 1 Url"
+            },
+            {
+                "type": "text",
+                "id": "button2text",
+                "label": "Button 2 Text"
+            },
+            {
+                "type": "url",
+                "id": "button2url",
+                "label": "Button 2 Url"
+            },
+            {
+            "type": "link_list",
+            "id": "menu1",
+            "label": "Menu 1"
+            },
+            {
+            "type": "link_list",
+            "id": "menu2",
+            "label": "Menu 2"
+            }
+        ],
+        "presets": [
+            {
+                "name": "CFooter",
+                "category": "Footer"
+            }
+        ]
+    }
+{% endschema %}

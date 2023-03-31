@@ -1,0 +1,79 @@
+<div class="slick__wrapper">
+    <div class="slick__top">
+        <h1 class="content--header">{{ section.settings.header }}</h1>
+        <div class="blurb__container">
+            <p>{{ section.settings.blurb }}</p>
+        </div>
+    </div>
+    <div class="slick__content-wrapper">
+        <div class="slick__prevArrow">
+            <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.553 0.833414L25.8332 8.28928L15.553 17.1667V9.93202H0.166504L0.166504 7.3029L15.553 7.3029L15.553 0.833414Z" fill="white"/>
+            </svg>
+        </div>
+
+        <div class="slick__content">
+            {% for block in section.blocks  %}
+                <div class="slick__blocks">
+                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="Block Image">
+                    <h3>{{ block.settings.name }}.</h3>
+                    <p>{{ block.settings.copy }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="slick__nextArrow">
+            <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.553 0.833414L25.8332 8.28928L15.553 17.1667V9.93202H0.166504L0.166504 7.3029L15.553 7.3029L15.553 0.833414Z" fill="white"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Slick",
+        "class": "Slick__section",
+        "settings": [
+            {
+                "type": "text",
+                "id": "header",
+                "label": "Header"
+            },
+            {
+                "type": "text",
+                "id": "blurb",
+                "label": "Blurb"
+            }
+        ],
+        "blocks": [
+            {
+                "name": "Slick Block",
+                "type": "Content",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "name",
+                        "label": "Name"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "copy",
+                        "label": "Copy"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Slick",
+                "category": "Content"
+            }
+        ]
+    }
+{% endschema %}
